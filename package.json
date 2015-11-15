@@ -1,0 +1,42 @@
+{
+  "name": "ok-patterns-lines",
+  "version": "0.0.1",
+  "description": "Patterns Plugin of OK BLOCKS.",
+  "main": "index.js",
+  "scripts": {
+    "build:js":"browserify -t babelify ./src/js/index.js -d | exorcist ./src/bundle.js.map > ./src/bundle.js",
+    "build:css": "stylus -u nib -c ./src/stylus/index.styl -o ./src/bundle.css -m",
+    "watch:js":"watchify -t babelify ./src/js/index.js -o \"exorcist ./src/bundle.js.map > ./src/bundle.js\" -d",
+    "watch:css": "stylus -u nib -c -w ./src/stylus/index.styl -o ./src/bundle.css -m",
+    "release:js":"browserify -t babelify ./src/js/index.js | uglifyjs > ./dist/bundle.js",
+    "release:css": "stylus -u nib -c ./src/stylus/index.styl -o ./dist/bundle.css",
+    "release:clean": "rimraf ./dist",
+    "release:mkdir": "npm run release:clean && mkdirp ./dist",
+    "release": "npm-run-all -s release:mkdir -p release:js release:css",
+    "watch": "npm-run-all -p watch:*",
+    "start": "npm run watch"
+  },
+  "author": "Keita Okamoto <ok@aaa.email.ne.jp>",
+  "license": "MIT",
+  "devDependencies": {
+    "append-css": "^0.1.6",
+    "babel-core": "^6.1.21",
+    "babel-plugin-espower": "^2.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.1.20",
+    "babel-preset-es2015": "^6.1.18",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "cpx": "^1.2.1",
+    "exorcist": "^0.4.0",
+    "mkdirp": "*",
+    "mocha": "^2.2.5",
+    "nib": "^1.1.0",
+    "npm-run-all": "^1.2.12",
+    "power-assert": "^1.2.0",
+    "rimraf": "^2.4.3",
+    "stylus": "^0.52.0",
+    "testem": "*",
+    "uglify-js": "^2.4.24",
+    "watchify": "^3.3.1"
+  }
+}
