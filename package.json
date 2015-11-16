@@ -1,7 +1,7 @@
 {
-  "name": "ok-patterns-lines",
+  "name": "@all-user/ok-patterns-lines",
   "version": "0.0.1",
-  "description": "Patterns Plugin of OK BLOCKS.",
+  "description": "Patterns Plugin for OK BLOCKS.",
   "main": "index.js",
   "scripts": {
     "build:js":"browserify -t babelify ./src/js/index.js -d | exorcist ./src/bundle.js.map > ./src/bundle.js",
@@ -9,10 +9,11 @@
     "watch:js":"watchify -t babelify ./src/js/index.js -o \"exorcist ./src/bundle.js.map > ./src/bundle.js\" -d",
     "watch:css": "stylus -u nib -c -w ./src/stylus/index.styl -o ./src/bundle.css -m",
     "release:js":"browserify -t babelify ./src/js/index.js | uglifyjs > ./dist/bundle.js",
+    "release:es5":"babel src/js -x .js -d lib",
     "release:css": "stylus -u nib -c ./src/stylus/index.styl -o ./dist/bundle.css",
     "release:clean": "rimraf ./dist",
     "release:mkdir": "npm run release:clean && mkdirp ./dist",
-    "release": "npm-run-all -s release:mkdir -p release:js release:css",
+    "release": "npm-run-all -s release:mkdir -p release:js release:css release:es5",
     "watch": "npm-run-all -p watch:*",
     "start": "npm run watch"
   },
