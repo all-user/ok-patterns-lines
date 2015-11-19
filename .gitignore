@@ -1,1 +1,6 @@
-/src/bundle.*
+/node_modules/
+/src/**/bundle.js
+/src/**/bundle.css
+/src/**/*.map
+/test/**/bundle.js
+/test/**/*.map
