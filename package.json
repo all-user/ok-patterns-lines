@@ -4,6 +4,7 @@
   "description": "Patterns Plugin for OK BLOCKS.",
   "main": "index.js",
   "scripts": {
+    "help": "npm-run-help",
     "lint": "eslint src/js/**/*.js",
     "build:js": "browserify -t babelify ./src/js/index.js -d | exorcist ./src/bundle.js.map > ./src/bundle.js",
     "build:css": "stylus -u nib -c ./src/stylus/index.styl -o ./src/bundle.css -m",
@@ -38,6 +39,7 @@
     "mocha": "^2.2.5",
     "nib": "^1.1.0",
     "npm-run-all": "^1.2.12",
+    "npm-run-help": "^1.1.0",
     "power-assert": "^1.2.0",
     "rimraf": "^2.4.3",
     "stylus": "^0.52.0",
