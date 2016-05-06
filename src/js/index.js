@@ -475,6 +475,7 @@ module.exports = OKBlock => {
     },
     set: function(n) {
       if (n > this[WEIGHT_LIMIT_PROP] || n < 0) { return; }
+      if (this[WEIGHT_PROP] === n) { return; }
       this.dom.classList.add(`weight_${ n }`);
       this.dom.classList.remove(`weight_${ this[WEIGHT_PROP] }`);
       this[WEIGHT_PROP] = n;
@@ -493,6 +494,28 @@ module.exports = OKBlock => {
 
   Object.defineProperty(OKBlock.prototype, WEIGHT_LIMIT_PROP, {
     value: 6
+  });
+
+  const LINE_COLOR_PROP = Symbol();
+  const PAD_COLOR_PROP = Symbol();
+  Object.defineProperty(OKBlock.prototype, 'lineColor', {
+    get: function() {
+      return this[LINE_COLOR_PROP];
+    },
+    set: function(color) {
+      [...this.dom.querySelectorAll('.part')].forEach(p => { p.style.backgroundColor = color; });
+      this[LINE_COLOR_PROP] = color;
+    }
+  });
+
+  Object.defineProperty(OKBlock.prototype, 'paddingColor', {
+    get: function() {
+      return this[PAD_COLOR_PROP];
+    },
+    set: function(color) {
+      [...this.dom.querySelectorAll('.whitebox')].forEach(p => { p.style.backgroundColor = color; });
+      this[PAD_COLOR_PROP] = color;
+    }
   });
 
   return OKBlock;
