@@ -50,5 +50,8 @@
     "unicodeCodePointEscapes": true,
     "globalReturn": true
   },
-  "parser": "babel-eslint"
+  "parser": "babel-eslint",
+  "plugins": [
+    "flowtype"
+  ]
 }
