@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-if [ -z $1 ]; then
+if [ -z "$1" ]; then
   echo 'Please specify internal package.'
   exit 1
 fi
@@ -9,7 +9,7 @@ root=`pwd`
 types_dir=$root/packages/$1
 bumpup=''
 
-case "$1" in
+case "$2" in
   patch)
     bumpup=patch
     ;;
