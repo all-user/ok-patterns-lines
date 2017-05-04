@@ -17,7 +17,9 @@
       "always"
     ],
     "no-console": 1,
-    "no-unused-vars": 1
+    "no-unused-vars": 1,
+    "flowtype/define-flow-type": 1,
+    "flowtype/use-flow-type": 1
   },
   "env": {
     "es6": true,
