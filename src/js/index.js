@@ -2,15 +2,13 @@
 import type {
   OKPatternsDefinition,
   OKBlockOptions,
+  OKBlockConstructorOptions,
   OKPatternsFormationTable,
   OKPatternsTransitionProps
 } from '@all-user/ok-blocks';
 import {
   OKBlock
 } from '@all-user/ok-blocks';
-import type {
-  AdvancedByLinesPattern
-} from '@all-user/ok-patterns-lines.types';
 
 /*
  * default options
@@ -481,13 +479,13 @@ module.exports = (OKBlockBase: Class<OKBlock>) => {
    * advanced properties
    */
 
-  const AdvancedByLinesPattern = class extends OKBlockBase {
+  const ExtendedByLinesPattern = class extends OKBlockBase {
     static WEIGHT_LIMIT;
     _weight: number;
     _lineColor: string;
     _paddingColor: string;
 
-    constructor(c: string, options?: OKBlockOptions) {
+    constructor(c: string, options?: OKBlockConstructorOptions) {
       super(c, options);
       this._weight = 3;
     }
@@ -531,7 +529,7 @@ module.exports = (OKBlockBase: Class<OKBlock>) => {
     }
   };
 
-  AdvancedByLinesPattern.WEIGHT_LIMIT = 6;
+  ExtendedByLinesPattern.WEIGHT_LIMIT = 6;
 
-  return AdvancedByLinesPattern;
+  return ExtendedByLinesPattern;
 };
