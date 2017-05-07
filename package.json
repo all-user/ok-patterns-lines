@@ -54,7 +54,7 @@
     "watchify": "^3.3.1"
   },
   "peerDependencies": {
-    "@all-user/ok-blocks": "^0.0.7"
+    "@all-user/ok-blocks": "^0.1.0"
   },
   "dependencies": {}
 }
