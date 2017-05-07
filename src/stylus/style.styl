@@ -9,7 +9,7 @@
   height     $base_len
   background transparent
   & > .part
-    // will-change background-color
+    will-change background-color
     margin     0
     padding    0
     display    block
@@ -19,10 +19,10 @@
     overflow   hidden
     border     none
     background transparent
-    // & > .whitebox-wrapper
-    //   will-change top, left, width, height
-    //   & > .whitebox
-    //     will-change border-radius, width, height, top, left, right, bottom
+    & > .whitebox-wrapper
+      will-change top, left, width, height
+      & > .whitebox
+        will-change border-radius, width, height, top, left, right, bottom
 
 // detail
 
