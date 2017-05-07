@@ -42,10 +42,8 @@
     "exorcist": "^0.4.0",
     "flow-bin": "^0.45.0",
     "flow-typed": "^2.1.2",
-    "mkdirp": "*",
     "mocha": "^3.3.0",
     "nib": "^1.1.0",
-    "npm-run-all": "^4.0.2",
     "npm-run-help": "^1.1.0",
     "power-assert": "^1.2.0",
     "rimraf": "^2.4.3",
@@ -56,5 +54,8 @@
   "peerDependencies": {
     "@all-user/ok-blocks": "^0.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "mkdirp": "*",
+    "npm-run-all": "^4.0.2"
+  }
 }
