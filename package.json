@@ -29,6 +29,7 @@
   "author": "Keita Okamoto <ok@aaa.email.ne.jp>",
   "license": "MIT",
   "devDependencies": {
+    "@all-user/ok-blocks": "^0.1.0",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.1.21",
     "babel-eslint": "^7.2.3",
@@ -50,9 +51,6 @@
     "stylus": "^0.54.5",
     "uglify-js": "^2.4.24",
     "watchify": "^3.3.1"
-  },
-  "peerDependencies": {
-    "@all-user/ok-blocks": "^0.1.0"
   },
   "dependencies": {
     "mkdirp": "*",
