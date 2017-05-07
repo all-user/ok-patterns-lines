@@ -472,14 +472,11 @@ const _TRANSITION_PROPS: OKPatternsTransitionProps = [
 ];
 
 module.exports = (OKBlockBase: Class<OKBlock>) => {
-  const definition: OKPatternsDefinition = { _DEFAULT_OPTIONS, _BASE_DOM, _TRANSITION_PROPS, _formationTable };
-  OKBlockBase.define('Lines', definition);
-
   /*
    * advanced properties
    */
 
-  const ExtendedByLinesPattern = class extends OKBlockBase {
+  class ExtendedByLinesPattern extends OKBlockBase {
     static WEIGHT_LIMIT;
     _weight: number;
     _lineColor: string;
@@ -527,9 +524,12 @@ module.exports = (OKBlockBase: Class<OKBlock>) => {
       [...this.dom.querySelectorAll('.whitebox')].forEach(p => { p.style.backgroundColor = color; });
       this._paddingColor = color;
     }
-  };
+  }
 
   ExtendedByLinesPattern.WEIGHT_LIMIT = 6;
+
+  const definition: OKPatternsDefinition = { _DEFAULT_OPTIONS, _BASE_DOM, _TRANSITION_PROPS, _formationTable, _Class: ExtendedByLinesPattern };
+  OKBlockBase.define('Lines', definition);
 
   return ExtendedByLinesPattern;
 };

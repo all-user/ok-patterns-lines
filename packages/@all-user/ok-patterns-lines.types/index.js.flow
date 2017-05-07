@@ -1,1 +1,18 @@
 // @flow
+
+import { OKBlock } from '@all-user/ok-blocks';
+import type { OKBlockConstructorOptions } from '@all-user/ok-blocks';
+
+declare export class ExtendedByLinesPattern extends OKBlock {
+  static WEIGHT_LIMIT: number;
+
+  _lineColor: string;
+  _paddingColor: string;
+  _weight: number;
+  lineColor: string;
+  paddingColor: string;
+  weight: number;
+  bolder(): void;
+  constructor(c: string, options?: OKBlockConstructorOptions): void;
+  lighter(): void;
+}
