@@ -1,0 +1,8 @@
+// @flow
+
+import {OKBlock} from "@all-user/ok-blocks";
+import type { ExtendedByLinesPattern as _ExtendedByLinesPattern } from '@all-user/ok-patterns-lines.types';
+
+export type ExtendedByLinesPattern = _ExtendedByLinesPattern;
+
+declare module.exports: (OKBlockBase: Class<OKBlock>) => Class<_ExtendedByLinesPattern>;

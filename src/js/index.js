@@ -1,8 +1,20 @@
+// @flow
+import type {
+  OKPatternsDefinition,
+  OKBlockOptions,
+  OKBlockConstructorOptions,
+  OKPatternsFormationTable,
+  OKPatternsTransitionProps
+} from '@all-user/ok-blocks';
+import {
+  OKBlock
+} from '@all-user/ok-blocks';
+
 /*
  * default options
  */
 
-const _DEFAULT_OPTIONS = {
+const _DEFAULT_OPTIONS: OKBlockOptions = {
   displayTime: 1500,
   duration:    200,
   loop:        false,
@@ -100,7 +112,7 @@ const _BL         = 'part blank';
 /*
  * Formation settings of all characters.
  */
-var _formationTable = {
+var _formationTable: OKPatternsFormationTable = {
   'a': [
     _L_R90,       _I_R90,     _L_R180,
     _T_R270,      _I_R90,     _T_R90,
@@ -452,71 +464,72 @@ var _formationTable = {
 /*
  * Transition settings.
  */
-const _TRANSITION_PROPS = [
+const _TRANSITION_PROPS: OKPatternsTransitionProps = [
   'width',
   'height',
   'background-color',
   'border-radius'
 ];
 
-module.exports = OKBlock => {
-  OKBlock.define('Lines', { _DEFAULT_OPTIONS, _BASE_DOM, _TRANSITION_PROPS, _formationTable });
-
+module.exports = (OKBlockBase: Class<OKBlock>) => {
   /*
    * advanced properties
    */
 
-  const WEIGHT_PROP       = Symbol();
-  const WEIGHT_LIMIT_PROP = Symbol();
+  class ExtendedByLinesPattern extends OKBlockBase {
+    static WEIGHT_LIMIT;
+    _weight: number;
+    _lineColor: string;
+    _paddingColor: string;
 
-  Object.defineProperty(OKBlock.prototype, 'weight', {
-    get: function() {
-      return this[WEIGHT_PROP];
-    },
-    set: function(n) {
-      if (n > this[WEIGHT_LIMIT_PROP] || n < 0) { return; }
-      if (this[WEIGHT_PROP] === n) { return; }
+    constructor(c: string, options?: OKBlockConstructorOptions) {
+      super(c, options);
+      this._weight = 3;
+    }
+
+    get weight(): number {
+      return this._weight;
+    }
+
+    set weight(n: number) {
+      if (n > this.constructor.WEIGHT_LIMIT || n < 0) { return; }
+      if (this._weight === n) { return; }
       this.dom.classList.add(`weight_${ n }`);
-      this.dom.classList.remove(`weight_${ this[WEIGHT_PROP] }`);
-      this[WEIGHT_PROP] = n;
+      this.dom.classList.remove(`weight_${ this._weight }`);
+      this._weight = n;
     }
-  });
 
-  OKBlock.prototype.bolder = function () {
-    this.weight = this[WEIGHT_PROP] + 1;
-  };
+    bolder() {
+      this.weight = this._weight + 1;
+    }
 
-  OKBlock.prototype.lighter = function () {
-    this.weight = this[WEIGHT_PROP] - 1;
-  };
+    lighter() {
+      this.weight = this._weight - 1;
+    }
 
-  OKBlock.prototype[WEIGHT_PROP] = 3;
+    get lineColor(): string {
+      return this._lineColor;
+    }
 
-  Object.defineProperty(OKBlock.prototype, WEIGHT_LIMIT_PROP, {
-    value: 6
-  });
-
-  const LINE_COLOR_PROP = Symbol();
-  const PAD_COLOR_PROP = Symbol();
-  Object.defineProperty(OKBlock.prototype, 'lineColor', {
-    get: function() {
-      return this[LINE_COLOR_PROP];
-    },
-    set: function(color) {
+    set lineColor(color: string) {
       [...this.dom.querySelectorAll('.part')].forEach(p => { p.style.backgroundColor = color; });
-      this[LINE_COLOR_PROP] = color;
+      this._lineColor = color;
     }
-  });
 
-  Object.defineProperty(OKBlock.prototype, 'paddingColor', {
-    get: function() {
-      return this[PAD_COLOR_PROP];
-    },
-    set: function(color) {
+    get paddingColor(): string {
+      return this._paddingColor;
+    }
+
+    set paddingColor(color: string) {
       [...this.dom.querySelectorAll('.whitebox')].forEach(p => { p.style.backgroundColor = color; });
-      this[PAD_COLOR_PROP] = color;
+      this._paddingColor = color;
     }
-  });
+  }
 
-  return OKBlock;
+  ExtendedByLinesPattern.WEIGHT_LIMIT = 6;
+
+  const definition: OKPatternsDefinition = { _DEFAULT_OPTIONS, _BASE_DOM, _TRANSITION_PROPS, _formationTable, _Class: ExtendedByLinesPattern };
+  OKBlockBase.define('Lines', definition);
+
+  return ExtendedByLinesPattern;
 };
