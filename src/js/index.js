@@ -6,9 +6,9 @@ import type {
   OKPatternsFormationTable,
   OKPatternsTransitionProps
 } from '@all-user/ok-blocks';
-import {
-  OKBlock
-} from '@all-user/ok-blocks';
+import type {
+  OKBlockClass
+} from '@all-user/ok-patterns-lines.types';
 
 /*
  * default options
@@ -471,7 +471,7 @@ const _TRANSITION_PROPS: OKPatternsTransitionProps = [
   'border-radius'
 ];
 
-module.exports = (OKBlockBase: Class<OKBlock>) => {
+module.exports = (OKBlockBase: OKBlockClass) => {
   /*
    * advanced properties
    */

@@ -3,6 +3,8 @@
 import { OKBlock } from '@all-user/ok-blocks';
 import type { OKBlockConstructorOptions } from '@all-user/ok-blocks';
 
+export type OKBlockClass = Class<OKBlock>;
+
 declare export class ExtendedByLinesPattern extends OKBlock {
   static WEIGHT_LIMIT: number;
 
