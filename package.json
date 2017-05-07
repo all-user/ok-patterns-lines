@@ -1,6 +1,6 @@
 {
   "name": "@all-user/ok-patterns-lines",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Patterns Plugin for OK BLOCKS.",
   "main": "lib/js/index.js",
   "scripts": {
