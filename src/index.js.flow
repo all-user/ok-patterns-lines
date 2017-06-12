@@ -1,0 +1,18 @@
+// @flow
+
+declare export class LinesPattern {
+  static WEIGHT_LIMIT: number;
+
+  _lineColor: string;
+  _paddingColor: string;
+  _weight: number;
+  lineColor: string;
+  paddingColor: string;
+  weight: number;
+  bolder(): void;
+  lighter(): void;
+}
+
+export type ExtendedByLinesPattern<T> = T & LinesPattern;
+
+declare module.exports: <T>(OKBlock: T) => Class<ExtendedByLinesPattern<T>>;

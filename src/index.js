@@ -4,11 +4,9 @@ import type {
   OKBlockOptions,
   OKBlockConstructorOptions,
   OKPatternsFormationTable,
-  OKPatternsTransitionProps
+  OKPatternsTransitionProps,
+  OKBlock
 } from '@all-user/ok-blocks';
-import type {
-  OKBlockClass
-} from '@all-user/ok-patterns-lines.types';
 
 /*
  * default options
@@ -471,12 +469,12 @@ const _TRANSITION_PROPS: OKPatternsTransitionProps = [
   'border-radius'
 ];
 
-module.exports = (OKBlockBase: OKBlockClass) => {
+module.exports = (OKBlock: Class<any>) => {
   /*
    * advanced properties
    */
 
-  class ExtendedByLinesPattern extends OKBlockBase {
+  class ExtendedByLinesPattern extends OKBlock {
     static WEIGHT_LIMIT;
     _weight: number;
     _lineColor: string;
@@ -529,7 +527,7 @@ module.exports = (OKBlockBase: OKBlockClass) => {
   ExtendedByLinesPattern.WEIGHT_LIMIT = 6;
 
   const definition: OKPatternsDefinition = { _DEFAULT_OPTIONS, _BASE_DOM, _TRANSITION_PROPS, _formationTable, _Class: ExtendedByLinesPattern };
-  OKBlockBase.define('Lines', definition);
+  OKBlock.define('Lines', definition);
 
   return ExtendedByLinesPattern;
 };
