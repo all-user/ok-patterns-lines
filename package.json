@@ -1,6 +1,6 @@
 {
   "name": "@all-user/ok-patterns-lines",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Patterns Plugin for OK BLOCKS.",
   "main": "lib/index.js",
   "scripts": {
@@ -54,6 +54,5 @@
     "uglify-js": "^2.4.24",
     "watchify": "^3.3.1"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
