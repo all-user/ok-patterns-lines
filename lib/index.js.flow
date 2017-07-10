@@ -15,4 +15,4 @@ declare export class LinesPattern {
 
 export type ExtendedByLinesPattern<T> = T & LinesPattern;
 
-declare module.exports: <T>(OKBlock: T) => Class<ExtendedByLinesPattern<T>>;
+declare export default <T>(OKBlock: T) => Class<ExtendedByLinesPattern<T>>;
