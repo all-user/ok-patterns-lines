@@ -469,12 +469,12 @@ const _TRANSITION_PROPS: OKPatternsTransitionProps = [
   'border-radius'
 ];
 
-module.exports = (OKBlock: Class<any>) => {
+module.exports = (OKBlockClass: Class<OKBlock>): Class<OKBlock> => {
   /*
    * advanced properties
    */
 
-  class ExtendedByLinesPattern extends OKBlock {
+  class ExtendedByLinesPattern extends OKBlockClass {
     static WEIGHT_LIMIT;
     _weight: number;
     _lineColor: string;
@@ -527,7 +527,7 @@ module.exports = (OKBlock: Class<any>) => {
   ExtendedByLinesPattern.WEIGHT_LIMIT = 6;
 
   const definition: OKPatternsDefinition = { _DEFAULT_OPTIONS, _BASE_DOM, _TRANSITION_PROPS, _formationTable, _Class: ExtendedByLinesPattern };
-  OKBlock.define('Lines', definition);
+  OKBlockClass.define('Lines', definition);
 
   return ExtendedByLinesPattern;
 };
