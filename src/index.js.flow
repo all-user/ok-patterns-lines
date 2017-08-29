@@ -1,4 +1,7 @@
 // @flow
+import type {
+  OKBlock
+} from '@all-user/ok-blocks';
 
 declare export class LinesPattern {
   static WEIGHT_LIMIT: number;
@@ -13,6 +16,7 @@ declare export class LinesPattern {
   lighter(): void;
 }
 
-export type ExtendedByLinesPattern<T> = T & LinesPattern;
+export type ExtendedByLinesPattern<T> = LinesPattern & T;
+export type ExtendedByLinesPatternClass<T> = Class<LinesPattern> & T;
 
-declare module.exports: <T>(OKBlock: T) => Class<ExtendedByLinesPattern<T>>;
+declare export default <T: Class<OKBlock>>(OKBlockClass: T) => ExtendedByLinesPatternClass<T>;
